@@ -1,15 +1,16 @@
+
 height = 10
 coords = (4, 7)
 x, y = coords
-isInLine = 0
 
-for i in range(0, height):
-    if i == y:
-        isInLine = True
-    for j in range(0, 2*height):
-        if isInLine and j == x:
-            print("X", end="")
-            isInLine = False
-        else:
-            print(".", end="")
-    print()
+def pos(h):
+    row = []
+    for i in range(h):
+        row.append(i)
+    return row
+
+def render(array):
+    text = "."*array[-1]
+    return text
+
+print(render(pos(height)))
