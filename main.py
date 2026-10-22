@@ -10,7 +10,7 @@ positions = [
     
 def render(array):
     row = "."*(array[2][0] + 1)
-    grid = (row + "\n") * len(row)
+    grid = (row + "\n") * (len(row)-1) + row
     return grid
 
 print(positions)
