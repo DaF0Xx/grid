@@ -1,19 +1,19 @@
 
-height = 2 # Height of the grid
+height = 5 # Height of the grid
 matrix = [] # Variable that will contain the matrix of positions
 
-for i in range(height): # We build our matrix using the height variable
-    for j in range(2*height): # Here i put this instead of using a length variable to make the rendered grid look uniform (but i guess a length variable would be better)
+# We build our matrix using the height variable
+for y in range(height):
+    for x in range(2*height): # Here i put this instead of using a length variable to make the rendered grid look uniform (but i guess a length variable would be better)
         pos = []
-        pos.append(i)
-        pos.append(j)
+        pos.append(x)
+        pos.append(y)
         matrix.append(pos)
-
     
-def render(array): # We declare a function that can render our matrix, so that it looks like a grid of dots in the terminal
-    row = "."*(array[2][0] + 1)
-    grid = (row + "\n") * (len(row)-1) + row
+# We declare a function that can render our matrix, so that it looks like a grid of dots in the terminal
+def render(array):
+    row = "."*(array[-1][0] + 1) # array[-1][0] is the last "x" in the coordinate
+    grid = (row + "\n") * (array[-1][1]) + row # array[-1][1] is the last "y" in the coordinate
     return grid
 
-print(matrix)
 print(render(matrix))
