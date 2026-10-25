@@ -12,6 +12,22 @@ def build_matrix(n):
 
 # We declare a function that can render our matrix, so that it looks like a grid of dots in the terminal
 def render(array, pos=None):
-    row = "."*(array[-1][0] + 1) # array[-1][]0 is the last "x" in the coordinate
-    grid = (row + "\n") * (array[-1][1]) + row # array[-1][1] is the last "y" in the coordinate
+
+    storage = dict() # Dictionary that will store each coord and its respective string
+
+    for coord in array:
+        if pos != coord: # If the character's position isn't the same as coord, we assign a "." - if it is, "x"
+            storage.update({tuple(coord):"."})
+        else:
+            storage.update({tuple(coord):"x"})
+
+    grid = ""
+    length = array[-1][0] + 1
+    height = array[-1][1] + 1
+
+    for y in range(height):
+        for x in range(length):
+            grid += storage[(x, y)]
+        grid += "\n"
+
     return grid
