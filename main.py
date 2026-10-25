@@ -2,13 +2,12 @@ from functions import build_matrix
 from functions import render
 
 height = 3 # Height of the grid
-pos = [0,0] # Initial position
+matrix = build_matrix(height) # Our matrix of positions
+char_pos = [0,0] # Initial character position
+storage = dict() # Dictionary that will store each coord and its respective string
 
-matrix = build_matrix(height)
-
-storage = dict()
 for coord in matrix:
-    if pos != coord:
+    if char_pos != coord: # If the character's position isn't the same as coord, we assign a "." - if it is, "x"
         storage.update({tuple(coord):"."})
     else:
         storage.update({tuple(coord):"x"})
