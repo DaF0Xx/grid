@@ -4,6 +4,7 @@ from functions import render
 height = 10 # Height of the grid
 matrix = build_matrix(height) # Our matrix of positions
 character = {"position":[0,0]} # Character attributes
+clear = "\x1B[;H"
 
 running = True
 while running:
@@ -22,7 +23,8 @@ while running:
             character["position"][1] += 1
         else:
             print("Invalid move! try again.")
-            continue
     except KeyboardInterrupt:
         print("\nExiting...")
         break
+
+    print(clear)
