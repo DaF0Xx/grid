@@ -4,13 +4,15 @@ from functions import render
 height = 10 # Height of the grid
 matrix = build_matrix(height) # Our matrix of positions
 character = {"position":[0,0]} # Character attributes
-clear = "\x1B[;H"
+clear = "\x1B[2J\x1B[H\x1B[3J"
 
 running = True
+# Game Loop
 while running:
-    print(render(matrix, character["position"]))
-    print(f"position: {character["position"]}")
+    print(render(matrix, character["position"])) # Print the rendered matrix
+    print(f"position: {character["position"]}") # Print the character's position
 
+    # Ask for input so the character can move
     try:
         move = input("w, a, s, d: ").lower()
         if move == 'a':
@@ -27,4 +29,4 @@ while running:
         print("\nExiting...")
         break
 
-    print(clear)
+    print(clear, end="", flush=True)
